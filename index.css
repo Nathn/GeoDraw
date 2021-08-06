@@ -1,0 +1,25 @@
+.saveButton {
+	z-index: 50;
+	position: relative;
+	top: 80%;
+	bottom: 20%;
+	margin: auto auto;
+	width: max-content;
+	height: max-content;
+}
+
+.result {
+	position: sticky;
+	user-select: none;
+	-moz-user-select: none;
+	z-index: 98;
+	width: max-content;
+	height: max-content;
+	margin: 8em auto 0;
+	font-size: 3em;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	font-weight: bold;
+	text-transform: uppercase;
+	color: #ff590b;
+}
+

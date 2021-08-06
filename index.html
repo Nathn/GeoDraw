@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <link rel="image_src" href="images/logo.gif" />
     <link rel="shortcut icon" type="image/gif" href="images/favicon.gif">
+	<link rel="stylesheet" type="text/css" href="index.css">
     <script src="third-party/url.js"></script>
     <script src="third-party/jquery.js"></script>
     <script src="third-party/two.js"></script>
@@ -16,7 +17,7 @@
 
         $(function() {
 
-          createGrid();
+          createGrid(30);
 
           var type = /(canvas|webgl)/.test(url.type) ? url.type : 'svg';
           var two = new Two({
@@ -130,5 +131,12 @@
 
       </script>
     </div>
+	<div class="saveButton">
+		<button>
+			Analyse
+		</button>
+	</div>
+	<div class="result">
+	</div>
   </body>
 </html>
