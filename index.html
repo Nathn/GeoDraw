@@ -10,6 +10,8 @@
     <script src="third-party/url.js"></script>
     <script src="third-party/jquery.js"></script>
     <script src="third-party/two.js"></script>
+	<script src="third-party/sketchy.js"></script>
+	<script src="analyse.js"></script>
   </head>
   <body>
     <div class="scripts">
@@ -129,10 +131,17 @@
 
         });
 
+		function getSVG() {
+			let baseHTML = document.body.innerHTML;
+			let myRegexp = new RegExp("<svg.*<\/svg>", "g");
+			let svg = myRegexp.exec(baseHTML)[0];
+			return svg || None;
+          };
+
       </script>
     </div>
 	<div class="saveButton">
-		<button>
+		<button onClick="analyseDrawing(getSVG());">
 			Analyse
 		</button>
 	</div>
