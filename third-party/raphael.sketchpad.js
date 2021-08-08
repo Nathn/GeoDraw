@@ -140,7 +140,6 @@
 
 		self.json = function(value) {
 			if (value === undefined) {
-				console.log(_strokes)
 				for (var i = 0, n = _strokes.length; i < n; i++) {
 					var stroke = _strokes[i];
 					if (typeof stroke.path == "object") {
