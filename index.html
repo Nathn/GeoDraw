@@ -34,6 +34,9 @@
 				$("#saveButton").click(function () {
 					analyseDrawing(sketchpad_editor.json());
 				});
+				$('#clearButton').click(function(){
+            		sketchpad_editor.clear();
+          		});
 			});
 			function analyseDrawing(svg) {
 				match = 0
@@ -51,9 +54,12 @@
 	<div class="sketchcontainer">
 		<div id="sketchpad_editor" class="sketchpad"></div>
 	</div>
-	<div class="saveButtonContainer">
+	<div class="buttonsContainer">
 		<button id="saveButton" class="saveButton">
 			Analyse
+		</button>
+		<button id="clearButton" class="clearButton">
+			Clear
 		</button>
 	</div>
 	<div class="result">
