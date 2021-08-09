@@ -39,7 +39,7 @@ div.sketchcontainer{
 	padding-right: 5px;
 }
 div.sketchpad {
-	border: 1px solid #ccc;
+	border: 3px solid #3d3d3d;
 	background-color:#ffc;
 	background: url('paper.png');
 	width: 300px;

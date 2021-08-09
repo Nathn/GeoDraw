@@ -16,12 +16,13 @@
 	<script src="third-party/raphael-min.js"></script>
 	<script src="third-party/raphael.sketchpad.js"></script>
 	<script src="third-party/sketchy.js"></script>
+	<script src="countries.js"></script>
 </head>
 
 <body>
 	<div class="scripts">
 		<script>
-			$(document).ready(function () { // FYI, "$(function(){" is an alias to this line
+			$(document).ready(function () {
 				var sketchpad_editor = Raphael.sketchpad("sketchpad_editor", {
 					width: 300,
 					height: 300,
@@ -32,8 +33,11 @@
 				});
 			});
 			function analyseDrawing(svg) {
-				let result = Sketchy.shapeContextMatch(sketchpad_editor.json(), sketchpad_editor.json());
-				console.log(result || svg)
+				var country = countries.filter(c => {
+					return c.name == "France"
+				})[0]
+				let result = Sketchy.shapeContextMatch(svg, country.svg);
+				alert("Your design looks like France by about "+Math.round(result*100)+"% !")
 			};
 		</script>
 	</div>
