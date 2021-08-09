@@ -28,16 +28,23 @@
 					height: 300,
 					editing: true
 				});
+				var match = 0
+				var countryMatch;
+				var result;
 				$("#saveButton").click(function () {
 					analyseDrawing(sketchpad_editor.json());
 				});
 			});
 			function analyseDrawing(svg) {
-				var country = countries.filter(c => {
-					return c.name == "France"
-				})[0]
-				let result = Sketchy.shapeContextMatch(svg, country.svg);
-				alert("Your design looks like France by about "+Math.round(result*100)+"% !")
+				match = 0
+				for (var i = 0; i < countries.length; i++) {
+					result = Sketchy.shapeContextMatch(svg, countries[i].svg)
+					if (result > match) {
+						countryMatch = countries[i].name
+						match = result
+					}
+				}
+				alert(`Your drawing looks like ${countryMatch} by about ${Math.round(match*100)}% !`)
 			};
 		</script>
 	</div>
