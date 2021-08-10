@@ -23,9 +23,20 @@
 	<div class="scripts">
 		<script>
 			$(document).ready(function () {
+				var x, y;
+				if ($(document).width() - 50 > 700) {
+					x = 700
+				} else {
+					x = $(document).width() - 50
+				}
+				if ($(document).height() / 2 > 400) {
+					y = 400
+				} else {
+					y = $(document).height() / 2
+				}
 				var sketchpad_editor = Raphael.sketchpad("sketchpad_editor", {
-					width: 300,
-					height: 300,
+					width: x,
+					height: y,
 					editing: true
 				});
 				var match = 0
@@ -34,10 +45,11 @@
 				$("#saveButton").click(function () {
 					analyseDrawing(sketchpad_editor.json());
 				});
-				$('#clearButton').click(function(){
-            		sketchpad_editor.clear();
-          		});
+				$('#clearButton').click(function () {
+					sketchpad_editor.clear();
+				});
 			});
+
 			function analyseDrawing(svg) {
 				match = 0
 				for (var i = 0; i < countries.length; i++) {
@@ -47,20 +59,23 @@
 						match = result
 					}
 				}
-				alert(`Your drawing looks like ${countryMatch} by about ${Math.round(match*100)}% !`)
+				alert(`Your drawing looks like ${countryMatch} ! (${Math.round(match*100)}%)`)
 			};
+
 		</script>
 	</div>
-	<div class="sketchcontainer">
-		<div id="sketchpad_editor" class="sketchpad"></div>
-	</div>
-	<div class="buttonsContainer">
-		<button id="saveButton" class="saveButton">
-			Analyse
-		</button>
-		<button id="clearButton" class="clearButton">
-			Clear
-		</button>
+	<div class="geoDraw">
+		<div class="sketchcontainer">
+			<div id="sketchpad_editor" class="sketchpad"></div>
+		</div>
+		<div class="buttonsContainer">
+			<button id="saveButton" class="saveButton">
+				Analyse
+			</button>
+			<button id="clearButton" class="clearButton">
+				Clear
+			</button>
+		</div>
 	</div>
 	<div class="result">
 	</div>

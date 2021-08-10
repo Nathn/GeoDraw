@@ -1,9 +1,11 @@
+.geoDraw {
+	display: grid;
+	grid-template-rows: min-content auto;
+	align-items: center;
+}
+
 .buttonsContainer {
-	z-index: 50;
-	position: relative;
-	top: 80%;
-	bottom: 20%;
-	margin: auto auto;
+	margin: 15px auto;
 	width: max-content;
 	height: max-content;
 }
@@ -39,10 +41,13 @@ div.sketchcontainer{
 	padding-right: 5px;
 }
 div.sketchpad {
+	margin: auto auto;
 	border: 3px solid #3d3d3d;
-	background-color:#ffc;
-	background: url('paper.png');
-	width: 300px;
-	height: 300px;
+	width: 700px;
+	max-width: calc(100% - 50px);
+	height: 400px;
+	max-height: 50%;
+	background: rgba(0, 0, 0, 0) url("images/grid.png") repeat scroll 0px 0px / 30px 30px;
+	overflow: hidden;
 }
 
