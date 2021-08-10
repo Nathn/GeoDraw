@@ -41,6 +41,7 @@
 				});
 				var match = 0
 				var countryMatch;
+				var countryMatchSVG;
 				var result;
 				$("#saveButton").click(function () {
 					analyseDrawing(sketchpad_editor.json());
@@ -56,10 +57,17 @@
 					result = Sketchy.shapeContextMatch(svg, countries[i].svg)
 					if (result > match) {
 						countryMatch = countries[i].name
+						countryMatchSVG = countries[i].svg
 						match = result
 					}
-				}
-				alert(`Your drawing looks like ${countryMatch} ! (${Math.round(match*100)}%)`)
+				};
+				document.getElementsByClassName('result')[0].innerHTML = `<div class="textResult">Your drawing looks like <div class="country">${countryMatch}</div> ! (${Math.round(match*100)}%)</div> <div id="sketchpad_viewer" class="viewer"></div>`;
+				var sketchpad_viewer = Raphael.sketchpad("sketchpad_viewer", {
+					width: 350,
+					height: 200,
+					strokes: JSON.parse(countryMatchSVG),
+					editing: false
+				});
 			};
 
 		</script>
@@ -77,8 +85,7 @@
 			</button>
 		</div>
 	</div>
-	<div class="result">
-	</div>
+	<div class="result"></div>
 </body>
 
 </html>

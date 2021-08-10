@@ -396,7 +396,7 @@
 		};
 
 		function _mouseup(e) {
-			_enable_user_select();
+			//_enable_user_select();
 
 			var path = _pen.finish(e, self);
 

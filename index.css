@@ -5,24 +5,30 @@
 }
 
 .buttonsContainer {
-	margin: 15px auto;
+	margin: 10px auto;
 	width: max-content;
 	height: max-content;
 }
 
-.result {
-	position: sticky;
-	user-select: none;
+.textResult {
+	position: relative;
+	display: flex;
 	-moz-user-select: none;
-	z-index: 98;
+	-ms-user-select: none;
+	user-select: none;
 	width: max-content;
 	height: max-content;
-	margin: 8em auto 0;
-	font-size: 3em;
+	margin: 10px auto;
+	font-size: 2em;
 	font-family: Verdana, Geneva, Tahoma, sans-serif;
 	font-weight: bold;
 	text-transform: uppercase;
+	color: #000;
+}
+
+.country {
 	color: #ff590b;
+	margin: 0 0.4em;
 }
 
 #container {
@@ -43,11 +49,20 @@ div.sketchcontainer{
 div.sketchpad {
 	margin: auto auto;
 	border: 3px solid #3d3d3d;
-	width: 700px;
+	width: max-content;
 	max-width: calc(100% - 50px);
-	height: 400px;
+	height: max-content;
 	max-height: 50%;
 	background: rgba(0, 0, 0, 0) url("images/grid.png") repeat scroll 0px 0px / 30px 30px;
+	overflow: hidden;
+}
+div.viewer {
+	margin: auto auto;
+	border: 3px solid #3d3d3d;
+	width: max-content;
+	max-width: calc(100% - 50px);
+	height: max-content;
+	max-height: 50%;
 	overflow: hidden;
 }
 
