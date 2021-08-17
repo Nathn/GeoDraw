@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+
+<head>
+	<title>GeoDraw</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<link rel="image_src" href="images/logo.png" />
+	<link rel="shortcut icon" type="image/png" href="images/logo.png">
+	<link rel="stylesheet" type="text/css" href="index.css">
+	<script type="text/javascript" src="third-party/canvg.js"></script>
+	<script type="text/javascript" src="third-party/rgbcolor.js"></script>
+	<script src="third-party/json2.js"></script>
+	<script src="third-party/jquery-1.9.1.min.js"></script>
+	<script src="third-party/jquery-migrate-1.1.1.min.js"></script>
+	<script src="third-party/raphael-min.js"></script>
+	<script src="third-party/raphael.sketchpad.js"></script>
+	<script src="third-party/sketchy.js"></script>
+	<script src="countries.js"></script>
+</head>
+
+<body>
+	<div class="scripts">
+		<script>
+			$(document).ready(function () {
+				var x, y;
+				if ($(document).width() - 50 > 700) {
+					x = 700
+				} else {
+					x = $(document).width() - 50
+				}
+				if ($(document).height() / 2 > 400) {
+					y = 400
+				} else {
+					y = $(document).height() / 2
+				}
+				var sketchpad_editor = Raphael.sketchpad("sketchpad_editor", {
+					width: x,
+					height: y,
+					editing: true
+				});
+				var match = 0
+				var countryMatch;
+				var countryMatchSVG;
+				var countryMatchFlag;
+				var countryMatchViewBox;
+				var result;
+				$("#saveButton").click(function () {
+					analyseDrawing(sketchpad_editor.json());
+				});
+				$('#clearButton').click(function () {
+					sketchpad_editor.clear();
+					document.getElementsByClassName('result')[0].innerHTML = ""
+				});
+			});
+
+			function analyseDrawing(svg) {
+				match = 0
+				for (var i = 0; i < countries.length; i++) {
+					result = Sketchy.shapeContextMatch(svg, countries[i].svg)
+					if (result > match) {
+						countryMatch = countries[i].name
+						countryMatchSVG = countries[i].svg
+						countryMatchFlag = countries[i].flag
+						countryMatchViewBox = countries[i].viewBox
+						match = result
+					}
+				};
+				document.getElementById('result').innerHTML = `<div class="textResult">Your drawing looks like <div class="orange">${countryMatch}</div> ${countryMatchFlag} ! (${Math.round(match*100)}%)</div> <div id="sketchpad_viewer" class="viewer"></div>`;
+				var sketchpad_viewer = Raphael.sketchpad("sketchpad_viewer", {
+					width: 400,
+					height: 200,
+					strokes: JSON.parse(countryMatchSVG),
+					editing: false
+				});
+				document.getElementById('sketchpad_viewer').children[0].setAttribute("viewBox", countryMatchViewBox.toLocaleString());
+			};
+
+		</script>
+	</div>
+	<button id="challengeButton" class="sandboxButton" onClick="window.location.href='index.html'">🕹️ Challenge Mode</button>
+	<div class="geoDraw">
+		<div class="instruction" id="instruction">
+			<div id="l1">Welcome to Sandbox Mode !</div>
+			<div id="l2">Here, you can draw whatever you want or practice for Challenge Mode.</div>
+			<div id="l3"></div>
+		</div>
+		<div class="sketchcontainer">
+			<div id="sketchpad_editor" class="sketchpad"></div>
+		</div>
+		<div class="buttonsContainer">
+			<button id="saveButton" class="boardButton">
+				🗺️ Analyse
+			</button>
+			<button id="clearButton" class="boardButton">
+				🧼 Clear Board
+			</button>
+		</div>
+	</div>
+	<div class="result" id="result"></div>
+</body>
+
+</html>
