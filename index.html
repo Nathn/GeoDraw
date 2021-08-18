@@ -22,6 +22,7 @@
 <body>
 	<div class="scripts">
 		<script>
+			var sketchpad_editor;
 			$(document).ready(function () {
 				var x, y;
 				if ($(document).width() - 50 > 700) {
@@ -34,7 +35,7 @@
 				} else {
 					y = $(document).height() / 2
 				}
-				var sketchpad_editor = Raphael.sketchpad("sketchpad_editor", {
+				sketchpad_editor = Raphael.sketchpad("sketchpad_editor", {
 					width: x,
 					height: y,
 					editing: true
@@ -56,6 +57,12 @@
 					sketchpad_editor.clear();
 					document.getElementsByClassName('result')[0].innerHTML = ""
 				});
+				$('#retryButton').click(function () {
+					sketchpad_editor.clear();
+					document.getElementsByClassName('result')[0].innerHTML = ""
+					document.getElementById('buttonsContainer').style = ""
+					generateInstruction(true);
+				});
 				generateInstruction(true);
 			});
 
@@ -73,7 +80,8 @@
 					}
 				};
 				if (countryMatch != askedCountry) {
-					document.getElementById('result').innerHTML = `<div class="textResult">Your drawing looks like <div class="orange">${countryMatch}</div> ${countryMatchFlag} ! (${Math.round(match*100)}%)</div> <div class="score" id="score">You lost at <div class="orange">${points}</div> points.</div> <div id="sketchpad_viewer" class="viewer"></div>`;
+					document.getElementById('result').innerHTML = `<div class="textResult">Your drawing looks like <div class="orange">${countryMatch}</div> ${countryMatchFlag} ! (${Math.round(match*100)}%)</div> <div class="score" id="score"><div class="loseMessage">You lost with <div class="orange">${points}</div> points.</div><button id="retryButton" class="retryButton" onClick="newGame();">🔁 Retry</button></div> <div id="sketchpad_viewer" class="viewer"></div>`;
+					document.getElementById('buttonsContainer').style = "display: none;"
 				} else {
 					points ++;
 					document.getElementById('result').innerHTML = `<div class="textResult">Your drawing looks like <div class="orange">${countryMatch}</div> ${countryMatchFlag} ! (${Math.round(match*100)}%)</div> <div class="score" id="score">You now have <div class="orange">${points}</div> point(s).</div> <div id="sketchpad_viewer" class="viewer"></div>`;
@@ -119,14 +127,20 @@
 				playedCountries.push(askedCountry)
 				if (ft) {
 					document.getElementById('l1').innerHTML = `Welcome to this game of GeoDraw !`
-					document.getElementById('l2').innerHTML = `To win this round, you have to draw <div class="orange">${askedCountry} ${availableFlags[randomIndex]}</div>.`
+					document.getElementById('l2').innerHTML = `To win this round, you have to draw <div class="orange">${askedCountry}</div>${availableFlags[randomIndex]}.`
 					document.getElementById('l3').innerHTML = `If your drawing looks like another country, you lose !`
 				} else {
 					document.getElementById('l1').innerHTML = ``
-					document.getElementById('l2').innerHTML = `Good job ! Now try to draw <div class="orange">${askedCountry} ${availableFlags[randomIndex]}</div> !`
+					document.getElementById('l2').innerHTML = `Good job ! Now try to draw <div class="orange">${askedCountry}</div>${availableFlags[randomIndex]} !`
 					document.getElementById('l3').innerHTML = ``
 				}
 			};
+			function newGame() {
+				sketchpad_editor.clear();
+				document.getElementsByClassName('result')[0].innerHTML = ""
+				document.getElementById('buttonsContainer').style = ""
+				generateInstruction(true);
+			}
 
 		</script>
 	</div>
@@ -140,7 +154,7 @@
 		<div class="sketchcontainer">
 			<div id="sketchpad_editor" class="sketchpad"></div>
 		</div>
-		<div class="buttonsContainer">
+		<div class="buttonsContainer" id="buttonsContainer">
 			<button id="saveButton" class="boardButton">
 				🗺️ Analyse
 			</button>

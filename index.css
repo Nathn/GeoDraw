@@ -21,6 +21,18 @@
 	min-width: 15%;
 }
 
+.retryButton {
+	padding: 5px;
+	margin: 0 8px;
+	border: solid #555 5px;
+	border-radius: 5px;
+	background-color: azure;
+	font-size: 15px;
+	font-weight: bold;
+	color: #555;
+	min-width: 15%;
+}
+
 .sandboxButton {
 	position: absolute;
 	margin: 1% 0 0 1%;
@@ -65,6 +77,12 @@
 	color: #000;
 }
 
+.loseMessage {
+	position: relative;
+	display: flex;
+	margin: auto;
+}
+
 .instruction {
 	display: grid;
 	grid-template-rows: min-content min-content min-content;
@@ -75,14 +93,14 @@
 	width: max-content;
 	height: max-content;
 	margin: 10px auto;
-	font-size: 1em;
+	font-size: 1.5em;
 	font-family: Verdana, Geneva, Tahoma, sans-serif;
 	font-weight: bold;
 	color: #000;
 }
 
 #l2 {
-	display:flex;
+	display: flex;
 }
 
 .orange {
@@ -100,11 +118,13 @@
 	overflow: hidden;
 	min-width: 650px;
 }
-div.sketchcontainer{
+
+div.sketchcontainer {
 	float: left;
 	padding-left: 5px;
 	padding-right: 5px;
 }
+
 div.sketchpad {
 	margin: auto auto;
 	border: 3px solid #3d3d3d;
@@ -115,6 +135,7 @@ div.sketchpad {
 	background: rgba(0, 0, 0, 0) url("images/grid.png") repeat scroll 0px 0px / 30px 30px;
 	overflow: hidden;
 }
+
 div.viewer {
 	margin: auto auto;
 	border: 3px solid #3d3d3d;
@@ -124,4 +145,3 @@ div.viewer {
 	max-height: 50%;
 	overflow: hidden;
 }
-
