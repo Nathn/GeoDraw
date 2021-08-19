@@ -109,7 +109,7 @@
 						availableFlags.push(countries[i].flag)
 					}
 				};
-				if (availableCountries == []) {
+				if (availableCountries.length == 0) {
 					currentDifficulty ++;
 					for (var i = 0; i < countries.length; i++) {
 						if (countries[i].difficulty == currentDifficulty && !playedCountries.includes(countries[i].name)) {
@@ -118,7 +118,7 @@
 						}
 					};
 				}
-				if (availableCountries == []) {
+				if (availableCountries.length == 0) {
 					document.getElementById('instruction').innerHTML = `Wow, you successfully drew every available country ! Incredible !`
 					return;
 				}
