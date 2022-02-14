@@ -84,7 +84,11 @@
 					document.getElementById('buttonsContainer').style = "display: none;"
 				} else {
 					points ++;
-					document.getElementById('result').innerHTML = `<div class="textResult">Your drawing looks like <div class="orange">${countryMatch}</div> ${countryMatchFlag} ! (${Math.round(match*100)}%)</div> <div class="score" id="score">You now have <div class="orange">${points}</div> point(s).</div> <div id="sketchpad_viewer" class="viewer"></div>`;
+					if (points == 1) {
+						document.getElementById('result').innerHTML = `<div class="textResult">Your drawing looks like <div class="orange">${countryMatch}</div> ${countryMatchFlag} ! (${Math.round(match*100)}%)</div> <div class="score" id="score">You now have <div class="orange">${points}</div> point.</div> <div id="sketchpad_viewer" class="viewer"></div>`;
+					} else {
+						document.getElementById('result').innerHTML = `<div class="textResult">Your drawing looks like <div class="orange">${countryMatch}</div> ${countryMatchFlag} ! (${Math.round(match*100)}%)</div> <div class="score" id="score">You now have <div class="orange">${points}</div> points.</div> <div id="sketchpad_viewer" class="viewer"></div>`;
+					}
 					generateInstruction();
 				}
 				var sketchpad_viewer = Raphael.sketchpad("sketchpad_viewer", {
