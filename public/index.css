@@ -149,3 +149,18 @@ div.viewer {
 	max-height: 50%;
 	overflow: hidden;
 }
+
+.credits {
+	position: fixed;
+	bottom: 1%;
+    left: 1%;
+	font-size: 16px;
+	font-weight: bold;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	color: #555;
+}
+
+.credits a {
+	color: rgb(234, 167, 95);
+	text-decoration: underline;
+}
