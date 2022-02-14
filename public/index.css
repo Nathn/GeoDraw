@@ -154,13 +154,24 @@ div.viewer {
 	position: fixed;
 	bottom: 1%;
     left: 1%;
-	font-size: 16px;
+	font-size: 17px;
 	font-weight: bold;
 	font-family: Verdana, Geneva, Tahoma, sans-serif;
 	color: #555;
 }
 
 .credits a {
-	color: rgb(234, 167, 95);
+	color: rgb(95, 156, 234);
+	text-decoration: underline;
+}
+
+.github {
+	position: fixed;
+	bottom: 1%;
+    right: 1%;
+	font-size: 17px;
+	font-weight: bold;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	color: rgb(95, 156, 234);
 	text-decoration: underline;
 }
