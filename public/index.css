@@ -8,6 +8,10 @@ body {
 	align-items: center;
 }
 
+button {
+	cursor: pointer;
+}
+
 .buttonsContainer {
 	margin-top: 15px;
 	text-align: center;
